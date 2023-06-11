@@ -2,6 +2,12 @@
 
 namespace MyAspNetCoreApp.Web.Controllers
 {
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
     public class OrnekController : Controller
     {
         public IActionResult Index()
@@ -33,6 +39,19 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
 
         public IActionResult Index3()
+        {
+            var productList = new List<Product>()
+            {
+                new() {Id = 1, Name = "Product 1"},
+                new() {Id = 2, Name = "Product 2"},
+                new() {Id = 3, Name = "Product 3"},
+            };
+
+            return View(productList);
+        }
+
+
+        public IActionResult Index4()
         {
             return RedirectToAction("Index");
             //return RedirectToAction("Index","Ornek");
