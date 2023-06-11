@@ -17,6 +17,18 @@ namespace MyAspNetCoreApp.Web.Controllers
             //return View();
         }
 
+
+        //{controller=Home}/{action=Index}/{id?}
+        public IActionResult ParametreView(int id) //{id?} 
+        {
+            return RedirectToAction("JsonResultParametre", "Ornek", new {id=id}); //Ornek/JsonResultParametre/999
+        }
+
+        public IActionResult JsonResultParametre(int id)
+        {
+            return Json(new { Id = id });
+        }
+
         public IActionResult ContentResult()
         {
             return Content("ContentResult");
