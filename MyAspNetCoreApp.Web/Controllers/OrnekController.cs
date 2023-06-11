@@ -18,10 +18,21 @@ namespace MyAspNetCoreApp.Web.Controllers
             ViewData["names"] = new List<string>() { "Serkan", "Berkin", "Enes", "Furkan", "Enes" };
 
 
+            TempData["color"] = "Red";
+
+            TempData["book"] = "Limitless";
+
             return View();
         }
 
         public IActionResult Index2()
+        {
+            var book = TempData["book"];
+
+            return View();
+        }
+
+        public IActionResult Index3()
         {
             return RedirectToAction("Index");
             //return RedirectToAction("Index","Ornek");
