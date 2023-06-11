@@ -13,3 +13,15 @@
 <p>@name</p>
 
 <p>@ViewBag.name</p>
+
+<p>@ViewBag.Person.Id / @ViewBag.Person.Name / @ViewBag.Person.Surname </p>
+
+<hr/>
+
+<p>@ViewData["city"]</p>
+
+
+@foreach (var item in ViewData["names"] as List<string>)
+{
+    <p>@item</p>
+}
