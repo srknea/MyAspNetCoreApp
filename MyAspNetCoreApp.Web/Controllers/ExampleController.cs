@@ -13,5 +13,10 @@ namespace MyAspNetCoreApp.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult RenderSection()
+        {
+            return View();
+        }
     }
 }
