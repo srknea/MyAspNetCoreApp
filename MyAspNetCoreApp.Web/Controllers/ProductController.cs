@@ -9,16 +9,7 @@ namespace MyAspNetCoreApp.Web.Controllers
 
         public ProductController()
         {
-            _productRepository = new ProductRepository();
-
-            if (!_productRepository.GetAll().Any())
-            {
-
-                _productRepository.Add(new() { Id = 1, Name = "Kalem", Price = 10, Stock = 100 });
-                _productRepository.Add(new() { Id = 2, Name = "Defter", Price = 20, Stock = 200 });
-                _productRepository.Add(new() { Id = 3, Name = "Silgi", Price = 30, Stock = 300 });
-                //_productRepository.Add(new Product { Id = 4, Name = "Kalemtraş", Price = 40, Stock = 400 });
-            }
+            _productRepository = new ProductRepository(); 
         }
 
         public IActionResult Index()
