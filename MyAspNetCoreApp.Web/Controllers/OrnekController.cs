@@ -50,8 +50,13 @@ namespace MyAspNetCoreApp.Web.Controllers
             return View(productList);
         }
 
-
         public IActionResult Index4()
+        {
+            return View();
+        }
+
+
+        public IActionResult Index5()
         {
             return RedirectToAction("Index");
             //return RedirectToAction("Index","Ornek");

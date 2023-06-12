@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Index4";
+
+    var alert = "Bu bir uyarı mesajıdır!";
+}
+
+<h1>Index4</h1>
+
+<p>Günün Tarihi: @DateTime.Now.ToShortDateString()</p>
+
+@{
+    var dateTime = DateTime.Now;
+    var message = "Merhaba Dünya";
+
+    @* @: Text olduğunu ifade eder.*@
+    @: Günün Tarihi: @dateTime
+
+    <p>Günün Tarihi: @dateTime</p>
+
+    <text>Mesaj: @message </text>
+}
+
+@if (DateTime.IsLeapYear(DateTime.Now.Year))
+{
+    <p>Artık yıl</p>
+}
+else
+{
+    <p>Artık yıl değil</p>
+}
+
+
+@for(var i=0; i<=7; i++)
+{
+    <span>@i</span>
+}
+<br />
+@foreach (var item in Enumerable.Range(0,8).ToList())
+{
+    <span>@item</span>
+}
+
+<p>@alert</p>
