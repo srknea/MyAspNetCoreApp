@@ -2,7 +2,7 @@
 
 namespace MyAspNetCoreApp.Web.Controllers
 {
-    public class Product
+    public class Person
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -40,11 +40,11 @@ namespace MyAspNetCoreApp.Web.Controllers
 
         public IActionResult Index3()
         {
-            var productList = new List<Product>()
+            var productList = new List<Person>()
             {
-                new() {Id = 1, Name = "Product 1"},
-                new() {Id = 2, Name = "Product 2"},
-                new() {Id = 3, Name = "Product 3"},
+                new() {Id = 1, Name = "Person 1"},
+                new() {Id = 2, Name = "Person 2"},
+                new() {Id = 3, Name = "Person 3"},
             };
 
             return View(productList);
