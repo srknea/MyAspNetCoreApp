@@ -6,6 +6,7 @@
 
 <h1>Products</h1>
 
+<a asp-controller="product" asp-action="add">Yeni Ürün Ekle</a>
 <table class="table">
     <thead>
         <tr>
@@ -24,7 +25,10 @@
                 <td>@item.Name</td>
                 <td>@item.Price</td>
                 <td>@item.Stock</td>
-                <td><a asp-controller="product" asp-action="remove" asp-route-id="@item.Id">Sil</a></td> @*Tag Helpers*@
+                <td>
+                    <a asp-controller="product" asp-action="remove" asp-route-id="@item.Id">Sil</a> @*Tag Helpers*@
+                    <a asp-controller="product" asp-action="update" asp-route-id="@item.Id">Güncelle</a>
+                </td> 
             </tr>
         }
     </tbody>

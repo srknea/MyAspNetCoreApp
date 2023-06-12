@@ -21,7 +21,18 @@ namespace MyAspNetCoreApp.Web.Controllers
         public IActionResult Remove(int id)
         {
             _productRepository.Remove(id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
+            //return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        public IActionResult Update(int id)
+        {
+            return View();
         }
     }
 }
