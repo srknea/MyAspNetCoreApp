@@ -25,7 +25,14 @@ namespace MyAspNetCoreApp.Web.Controllers
             //return RedirectToAction(nameof(Index));
         }
 
+        //[HttpGet]
         public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SaveProduct()
         {
             return View();
         }
