@@ -13,7 +13,7 @@ namespace MyAspNetCoreApp.Web.Controllers
         {
             _productRepository = new ProductRepository();
             _context = context;
-            
+            /*
             if (!_context.Products.Any() == null)
             {
                 _context.Products.Add(new Product() { Name = "Kalem", Price = 120, Stock = 10, Color = "Red" });
@@ -22,6 +22,7 @@ namespace MyAspNetCoreApp.Web.Controllers
 
                 _context.SaveChanges();
             }
+            */
         }
 
         public IActionResult Index()
@@ -52,15 +53,16 @@ namespace MyAspNetCoreApp.Web.Controllers
         {
             var name = HttpContext.Request.Form["Name"].ToString();
             var price = decimal.Parse(HttpContext.Request.Form["Price"].ToString());
-            var stock = decimal.Parse(HttpContext.Request.Form["Stock"].ToString());  
+            var stock = int.Parse(HttpContext.Request.Form["Stock"].ToString());  
             var color = HttpContext.Request.Form["Color"].ToString();
 
             Product newProduct = new Product() {Name = name, Price = price, Stock = stock, Color = color };
 
-            _context.Product.Add(newProduct);
+            _context.Products.Add(newProduct);
 
+            _context.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index");   
         }
 
         public IActionResult Update(int id)
