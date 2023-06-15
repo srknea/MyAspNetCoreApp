@@ -49,14 +49,9 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveProduct()
+        public IActionResult SaveProduct(string Name, decimal Price, int Stock, string Color)
         {
-            var name = HttpContext.Request.Form["Name"].ToString();
-            var price = decimal.Parse(HttpContext.Request.Form["Price"].ToString());
-            var stock = int.Parse(HttpContext.Request.Form["Stock"].ToString());  
-            var color = HttpContext.Request.Form["Color"].ToString();
-
-            Product newProduct = new Product() {Name = name, Price = price, Stock = stock, Color = color };
+            Product newProduct = new Product() {Name = Name, Price = Price, Stock = Stock, Color = Color };
 
             _context.Products.Add(newProduct);
 
