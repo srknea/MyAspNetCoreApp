@@ -73,6 +73,8 @@ namespace MyAspNetCoreApp.Web.Controllers
             _context.Products.Update(updateProduct);
             _context.SaveChanges();
 
+            TempData["status"] = "Ürün başarıyla güncellendi.";
+
             return RedirectToAction("Index");
         }
     }
