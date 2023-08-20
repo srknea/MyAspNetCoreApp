@@ -1,6 +1,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using MyAspNetCoreApp.Web.Helpers;
 using MyAspNetCoreApp.Web.Models;
 using System;
 
@@ -17,7 +18,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 );
 
-
+builder.Services.AddSingleton<IHelper, Helper>();
 
 var app = builder.Build();
 

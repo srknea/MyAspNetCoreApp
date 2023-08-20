@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyAspNetCoreApp.Web.Helpers;
 using MyAspNetCoreApp.Web.Models;
 
 namespace MyAspNetCoreApp.Web.Controllers
@@ -7,26 +8,32 @@ namespace MyAspNetCoreApp.Web.Controllers
     {
         private AppDbContext _context;
         private readonly ProductRepository _productRepository;
+        private readonly IHelper _helper;
 
         //Dependency Injection Pattern
-        public ProductController(AppDbContext context) //DI Container
+        public ProductController(AppDbContext context, IHelper helper) //DI Container
         {
             _productRepository = new ProductRepository();
             _context = context;
+            _helper = helper;
+
             /*
             if (!_context.Products.Any() == null)
             {
-                _context.Products.Add(new Product() { Name = "Kalem", Price = 120, Stock = 10, Color = "Red" });
-                _context.Products.Add(new Product() { Name = "Silgi", Price = 40, Stock = 20, Color = "Blue" });
-                _context.Products.Add(new Product() { Name = "Defter", Price = 20, Stock = 30, Color = "Green" });
+            _context.Products.Add(new Product() { Name = "Kalem", Price = 120, Stock = 10, Color = "Red" });
+            _context.Products.Add(new Product() { Name = "Silgi", Price = 40, Stock = 20, Color = "Blue" });
+            _context.Products.Add(new Product() { Name = "Defter", Price = 20, Stock = 30, Color = "Green" });
 
-                _context.SaveChanges();
+            _context.SaveChanges();
             }
             */
         }
 
         public IActionResult Index()
         {
+            var text = "Asp.Net";
+            var upperText = _helper.Upper(text);
+
             var products = _context.Products.ToList();
             return View(products);
         }
