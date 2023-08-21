@@ -32,7 +32,7 @@ namespace MyAspNetCoreApp.Web.Controllers
         public IActionResult Index()
         {
             var text = "Asp.Net";
-            var upperText = _helper.Upper(text);
+            var upperText = _helper.ConvertCase(text);
 
             var products = _context.Products.ToList();
             return View(products);

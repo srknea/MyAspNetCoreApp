@@ -2,6 +2,6 @@
 {
     public interface IHelper
     {
-        string Upper(string text);
+        string ConvertCase(string text);
     }
 }

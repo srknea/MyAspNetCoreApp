@@ -2,9 +2,20 @@
 {
     public class Helper : IHelper
     {
-        public string Upper(string text)
+        private bool _isConfiguration;
+
+        public Helper(bool isConfiguration)
         {
-            return text.ToUpper();
+            _isConfiguration = isConfiguration;     
+        }
+        public string ConvertCase(string text)
+        {
+            if (_isConfiguration)
+            {
+                return text.ToUpper();
+            }
+
+            return text.ToLower();
         }
     }
 }
