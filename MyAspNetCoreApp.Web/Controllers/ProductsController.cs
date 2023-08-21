@@ -4,14 +4,14 @@ using MyAspNetCoreApp.Web.Models;
 
 namespace MyAspNetCoreApp.Web.Controllers
 {
-    public class ProductController : Controller
+    public class ProductsController : Controller
     {
         private AppDbContext _context;
         private readonly ProductRepository _productRepository;
         private readonly IHelper _helper;
 
         //Dependency Injection Pattern
-        public ProductController(AppDbContext context, IHelper helper) //DI Container
+        public ProductsController(AppDbContext context, IHelper helper) //DI Container
         {
             _productRepository = new ProductRepository();
             _context = context;

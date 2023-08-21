@@ -13,7 +13,7 @@
     </div>
 }
 
-<a asp-controller="product" asp-action="add">Yeni Ürün Ekle</a>
+<a asp-controller="products" asp-action="add">Yeni Ürün Ekle</a>
 <table class="table">
     <thead>
         <tr>
@@ -35,8 +35,8 @@
                 <td>@item.Stock</td>
                 <td>@item.Color</td>
                 <td>
-                    <a asp-controller="product" asp-action="remove" asp-route-id="@item.Id">Sil</a> @*Tag Helpers*@
-                    <a asp-controller="product" asp-action="update" asp-route-id="@item.Id">Güncelle</a>
+                    <a asp-controller="products" asp-action="remove" asp-route-id="@item.Id">Sil</a> @*Tag Helpers*@
+                    <a asp-controller="products" asp-action="update" asp-route-id="@item.Id">Güncelle</a>
                 </td> 
             </tr>
         }
