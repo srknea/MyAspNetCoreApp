@@ -24,8 +24,10 @@
     </div>
 
     <div class="mb-3">
-        <label class="form-label" asp-for="Color">Ürün rengi</label>
-        <input class="form-control" asp-for="Color" />
+        <label class="form-label">Ürün rengi :</label>
+        <select class="form-select" asp-items="@ViewBag.ColorSelect" asp-for="Color">
+            <option selected>Open this select menu</option>
+        </select>
     </div>
 
     <div class="form-check">

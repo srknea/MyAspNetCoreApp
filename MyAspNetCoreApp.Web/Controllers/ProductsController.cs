@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyAspNetCoreApp.Web.Helpers;
 using MyAspNetCoreApp.Web.Models;
 
@@ -44,7 +45,7 @@ namespace MyAspNetCoreApp.Web.Controllers
             _context.Products.Remove(product);
 
             _context.SaveChanges();
-            
+
             return RedirectToAction("Index");
             //return RedirectToAction(nameof(Index));
         }
@@ -60,6 +61,14 @@ namespace MyAspNetCoreApp.Web.Controllers
                 { "12 Ay", 12}
             };
 
+            ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>()
+            {
+                new ColorSelectList() { Text = "Red", Value = "Red" },
+                new ColorSelectList() { Text = "Blue", Value = "Blue" },
+                new ColorSelectList() { Text = "Green", Value = "Green" }
+            }, "Value", "Text");
+
+
             return View();
         }
 
@@ -70,7 +79,7 @@ namespace MyAspNetCoreApp.Web.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index");   
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
