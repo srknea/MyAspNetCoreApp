@@ -24,6 +24,7 @@
             <th>Color</th>
             <th>Yayınlansın mı?</th>
             <th>Yayında ne kadar kalacak? (Ay)</th>
+            <th>Açıklama</th>
             <th>İşlem</th>
         </tr>
     </thead>
@@ -38,6 +39,23 @@
                 <td>@item.Color</td>
                 <td>@(item.IsPublish ? "Evet" : "Hayır")</td>
                 <td>@item.Expire</td>
+                <td>
+                    @if(item.Description != null)
+                    {
+                        @if (item.Description.Length > 20)
+                        {
+                            <text>@item.Description.Substring(0,20)...</text>
+                        }
+                        else
+                        {
+                            <text>@item.Description</text>
+                        }
+                    }
+                    else
+                    {
+                        <text>Henüz bir açıklama yok !</text>
+                    }
+                </td>
                 <td>
                     <a asp-controller="products" asp-action="remove" asp-route-id="@item.Id">Sil</a> @*Tag Helpers*@
                     <a asp-controller="products" asp-action="update" asp-route-id="@item.Id">Güncelle</a>
