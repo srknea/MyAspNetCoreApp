@@ -49,8 +49,14 @@
     
     <div class="form-floating mt-3">
         <textarea class="form-control" style="height: 100px" asp-for="Description"></textarea>
-        <label asp-for="Description">Ürün Açıklaması</label>
+        <label class="form-control" asp-for="Description">Ürün Açıklaması</label>
     </div>
+
+    <div class="mt-3">
+        <label class="form-label">Ürün yayınlanma tarihi :</label>
+        <input class="form-control" asp-for="PublishDate">
+    </div>
+
 
     <br/>
 
