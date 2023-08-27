@@ -87,6 +87,22 @@ namespace MyAspNetCoreApp.Web.Controllers
         {
             var product = _context.Products.Find(id);
 
+            ViewBag.ExpireValue = product.Expire;
+            ViewBag.DictionaryExpire = new Dictionary<string, int>()
+            {
+                { "1 Ay", 1},
+                { "3 Ay", 3},
+                { "6 Ay", 6},
+                { "12 Ay", 12}
+            };
+
+            ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>()
+            {
+                new ColorSelectList() { Text = "Red", Value = "Red" },
+                new ColorSelectList() { Text = "Blue", Value = "Blue" },
+                new ColorSelectList() { Text = "Green", Value = "Green" }
+            }, "Value", "Text", product.Color);
+
             return View(product);
         }
 
