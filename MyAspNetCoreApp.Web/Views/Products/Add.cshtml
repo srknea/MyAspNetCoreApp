@@ -28,6 +28,25 @@
         <input class="form-control" asp-for="Color" />
     </div>
 
+    <div class="form-check">
+        <input class="form-check-input" asp-for="IsPublish">
+        <label class="form-check-label">
+            Yayınlansın mı ?
+        </label>
+    </div>
+
+    @foreach (var item in ViewBag.DictionaryExpire as Dictionary<string, int>)
+    {
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="Expire" value=@item.Value>
+            <label class="form-check-label">
+                @item.Key
+            </label>
+        </div>
+    }     
+
+    <br/>
+
     <button class="btn btn-primary" type="submit">Kaydet</button>
 
 </form>

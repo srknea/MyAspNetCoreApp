@@ -52,6 +52,14 @@ namespace MyAspNetCoreApp.Web.Controllers
         //[HttpGet]
         public IActionResult Add()
         {
+            ViewBag.DictionaryExpire = new Dictionary<string, int>()
+            {
+                { "1 Ay", 1},
+                { "3 Ay", 3},
+                { "6 Ay", 6},
+                { "12 Ay", 12}
+            };
+
             return View();
         }
 
