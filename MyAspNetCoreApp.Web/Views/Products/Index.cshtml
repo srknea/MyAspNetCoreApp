@@ -22,6 +22,8 @@
             <th>Price</th>
             <th>Stock</th>
             <th>Color</th>
+            <th>Yayınlansın mı?</th>
+            <th>Yayında ne kadar kalacak? (Ay)</th>
             <th>İşlem</th>
         </tr>
     </thead>
@@ -34,10 +36,12 @@
                 <td>@item.Price</td>
                 <td>@item.Stock</td>
                 <td>@item.Color</td>
+                <td>@(item.IsPublish ? "Evet" : "Hayır")</td>
+                <td>@item.Expire</td>
                 <td>
                     <a asp-controller="products" asp-action="remove" asp-route-id="@item.Id">Sil</a> @*Tag Helpers*@
                     <a asp-controller="products" asp-action="update" asp-route-id="@item.Id">Güncelle</a>
-                </td> 
+                </td>
             </tr>
         }
     </tbody>
