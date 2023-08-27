@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Add";
 }
 
@@ -9,19 +8,26 @@
 
 <form asp-controller="Products" asp-action="SaveProduct" method="post" >
 
-    <label>Ürün Adı</label>
-    <input type="text" asp-for="Name"/>
-    <br/>
-    <label>Ürün Fiyatı</label>
-    <input type="text" asp-for="Price"/>
-    <br/>
-    <label>Ürün Stok</label>
-    <input type="text" asp-for="Stock"/>
-    <br />
-    <label>Ürün Rengi</label>
-    <input type="text" asp-for="Color"/>
+    <div class="mb-3">
+        <label class="form-label">Ürün ismi :</label>
+        <input class="form-control" asp-for="Name" />
+    </div>
 
+    <div class="mb-3">
+        <label class="form-label">Ürün fiyatı :</label>
+        <input class="form-control" asp-for="Price" />
+    </div>
 
-    <button type="submit">Kaydet</button>
+    <div class="mb-3">
+        <label class="form-label">Ürün stoku :</label>
+        <input class="form-control" asp-for="Stock" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Ürün rengi</label>
+        <input class="form-control" asp-for="Color" />
+    </div>
+
+    <button class="btn btn-primary" type="submit">Kaydet</button>
 
 </form>
