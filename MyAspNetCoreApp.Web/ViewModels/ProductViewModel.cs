@@ -5,8 +5,9 @@ namespace MyAspNetCoreApp.Web.ViewModels
     public class ProductViewModel
     {
         public int Id { get; set; }
-        
+
         [Required(ErrorMessage = "İsim alanı boş olamaz !")]
+        [StringLength(100, ErrorMessage = "İsim alanı en fazla 100 karakter olabilir!")]
         public string Name { get; set; }
         
         [Required(ErrorMessage = "Fiyat alanı boş olamaz !")]
@@ -18,6 +19,7 @@ namespace MyAspNetCoreApp.Web.ViewModels
         public int? Stock { get; set; }
 
         [Required(ErrorMessage = "Açıklama alanı boş olamaz !")]
+        [StringLength(1000, MinimumLength = 10, ErrorMessage = "Açıklama alanı en fazla 1000 karakter olabilir!")]
         public string? Description { get; set; }
         
         [Required(ErrorMessage = "Renk alanı boş olamaz !")]
