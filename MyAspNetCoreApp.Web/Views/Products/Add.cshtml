@@ -55,8 +55,6 @@
         }
         <span class="text-danger" asp-validation-for="Expire"></span>
     </div>
-
-    
     
     <div class="mb-3">
         <div class="form-floating">
@@ -66,12 +64,16 @@
         </div>
     </div>
 
-    
-
     <div class="mb-3">
         <label class="form-label">Ürün yayınlanma tarihi :</label>
         <input class="form-control" asp-for="PublishDate">
         <span class="text-danger" asp-validation-for="PublishDate"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email :</label>
+        <input class="form-control" asp-for="EmailAddress">
+        <span class="text-danger" asp-validation-for="EmailAddress"></span>
     </div>
 
     <br/>
