@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MyAspNetCoreApp.Web.Helpers;
 using MyAspNetCoreApp.Web.Models;
+using MyAspNetCoreApp.Web.ViewModels;
 
 namespace MyAspNetCoreApp.Web.Controllers
 {
@@ -9,34 +11,21 @@ namespace MyAspNetCoreApp.Web.Controllers
     {
         private AppDbContext _context;
         private readonly ProductRepository _productRepository;
-        private readonly IHelper _helper;
+        private readonly IMapper _mapper;
 
         //Dependency Injection Pattern
-        public ProductsController(AppDbContext context, IHelper helper) //DI Container
+        public ProductsController(AppDbContext context, IMapper mapper) //DI Container
         {
             _productRepository = new ProductRepository();
             _context = context;
-            _helper = helper;
-
-            /*
-            if (!_context.Products.Any() == null)
-            {
-            _context.Products.Add(new Product() { Name = "Kalem", Price = 120, Stock = 10, Color = "Red" });
-            _context.Products.Add(new Product() { Name = "Silgi", Price = 40, Stock = 20, Color = "Blue" });
-            _context.Products.Add(new Product() { Name = "Defter", Price = 20, Stock = 30, Color = "Green" });
-
-            _context.SaveChanges();
-            }
-            */
+            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
-            var text = "Asp.Net";
-            var upperText = _helper.ConvertCase(text);
-
             var products = _context.Products.ToList();
-            return View(products);
+
+            return View(_mapper.Map<List<ProductViewModel>>(products));
         }
 
         public IActionResult Remove(int id)
@@ -73,13 +62,35 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveProduct(Product newProduct)
+        public IActionResult Add(ProductViewModel newProduct)
         {
-            _context.Products.Add(newProduct);
+            if(ModelState.IsValid)
+            {
+                _context.Products.Add(_mapper.Map<Product>(newProduct));
 
-            _context.SaveChanges();
+                _context.SaveChanges();
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.DictionaryExpire = new Dictionary<string, int>()
+                {
+                    { "1 Ay", 1},
+                    { "3 Ay", 3},
+                    { "6 Ay", 6},
+                    { "12 Ay", 12}
+                };
+
+                ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>()
+                {
+                    new ColorSelectList() { Text = "Red", Value = "Red" },
+                    new ColorSelectList() { Text = "Blue", Value = "Blue" },
+                    new ColorSelectList() { Text = "Green", Value = "Green" }
+                }, "Value", "Text");
+
+                return View();
+            }
         }
 
         [HttpGet]
