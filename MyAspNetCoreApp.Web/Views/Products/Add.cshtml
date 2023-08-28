@@ -17,47 +17,62 @@
     <div class="mb-3">
         <label class="form-label" asp-for="Price">Ürün fiyatı :</label>
         <input class="form-control" asp-for="Price" />
+        <span class="text-danger" asp-validation-for="Price"></span>
     </div>
 
     <div class="mb-3">
         <label class="form-label" asp-for="Stock">Ürün stoku :</label>
         <input class="form-control" asp-for="Stock" />
+        <span class="text-danger" asp-validation-for="Stock"></span>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Ürün rengi :</label>
         <select class="form-select" asp-items="@ViewBag.ColorSelect" asp-for="Color">
-            <option selected>Open this select menu</option>
+            <option value="">Open this select menu</option>
         </select>
+        <span class="text-danger" asp-validation-for="Color"></span>
     </div>
 
-    <div class="form-check">
-        <input class="form-check-input" asp-for="IsPublish">
-        <label class="form-check-label" asp-for="IsPublish">
-            Yayınlansın mı ?
-        </label>
-    </div>
-
-    @foreach (var item in ViewBag.DictionaryExpire as Dictionary<string, int>)
-    {
+    <div class="mb-3">
         <div class="form-check">
-            <input class="form-check-input" type="radio" id="Expire-@(item.Value)" asp-for="Expire" value=@item.Value>
-            <label class="form-check-label" for="Expire-@(item.Value)">
-                @item.Key
+            <input class="form-check-input" asp-for="IsPublish">
+            <label class="form-check-label" asp-for="IsPublish">
+                Yayınlansın mı ?
             </label>
         </div>
-    }
+    </div>
     
-    <div class="form-floating mt-3">
-        <textarea class="form-control" style="height: 100px" asp-for="Description"></textarea>
-        <label class="form-control" asp-for="Description">Ürün Açıklaması</label>
+    <div class="mb-3">
+        @foreach (var item in ViewBag.DictionaryExpire as Dictionary<string, int>)
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="Expire-@(item.Value)" asp-for="Expire" value=@item.Value>
+                <label class="form-check-label" for="Expire-@(item.Value)">
+                    @item.Key
+                </label>
+            </div>
+        }
+        <span class="text-danger" asp-validation-for="Expire"></span>
     </div>
 
-    <div class="mt-3">
+    
+    
+    <div class="mb-3">
+        <div class="form-floating">
+            <textarea class="form-control" style="height: 100px" asp-for="Description"></textarea>
+            <label class="form-control" asp-for="Description">Ürün Açıklaması</label>
+            <span class="text-danger" asp-validation-for="Description"></span>
+        </div>
+    </div>
+
+    
+
+    <div class="mb-3">
         <label class="form-label">Ürün yayınlanma tarihi :</label>
         <input class="form-control" asp-for="PublishDate">
+        <span class="text-danger" asp-validation-for="PublishDate"></span>
     </div>
-
 
     <br/>
 
