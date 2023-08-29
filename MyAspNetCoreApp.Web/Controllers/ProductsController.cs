@@ -74,6 +74,11 @@ namespace MyAspNetCoreApp.Web.Controllers
             }
             else
             {
+                if (!string.IsNullOrEmpty(newProduct.Name) && newProduct.Name.StartsWith("A"))
+                {
+                    ModelState.AddModelError("Name", "Ürün ismi A harfi ile başlayamaz.");
+                }
+
                 ViewBag.DictionaryExpire = new Dictionary<string, int>()
                 {
                     { "1 Ay", 1},
