@@ -140,35 +140,39 @@ namespace MyAspNetCoreApp.Web.Controllers
                 new ColorSelectList() { Text = "Green", Value = "Green" }
             }, "Value", "Text", product.Color);
 
-            return View(product);
+            return View(_mapper.Map<ProductViewModel>(product));
         }
 
         [HttpPost]
-        public IActionResult Update(Product updateProduct, int productId)
+        public IActionResult Update(ProductViewModel updateProduct)
         {
-            updateProduct.Id = productId;
-            _context.Products.Update(updateProduct);
-            _context.SaveChanges();
+            if (ModelState.IsValid){
+                _context.Products.Update(_mapper.Map<Product>(updateProduct));
+                _context.SaveChanges();
 
-            TempData["status"] = "Ürün başarıyla güncellendi.";
+                TempData["status"] = "Ürün başarıyla güncellendi.";
 
-            return RedirectToAction("Index");
-        }
-
-        //[HttpGet]
-        //[HttpPost]
-        [AcceptVerbs("GET", "POST")]
-        public IActionResult HasProductName(string name)
-        {
-            var anyProduct = _context.Products.Any(p => p.Name.ToLower() == name.ToLower());
-            
-            if(anyProduct)
-            {
-                return Json("Bu isimde bir ürün veri tabanında zaten var !");
+                return RedirectToAction("Index");
             }
             else
             {
-                return Json(true);
+                ViewBag.ExpireValue = updateProduct.Expire;
+                    ViewBag.DictionaryExpire = new Dictionary<string, int>()
+                {
+                    { "1 Ay", 1},
+                    { "3 Ay", 3},
+                    { "6 Ay", 6},
+                    { "12 Ay", 12}
+                };
+
+                    ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>()
+                {
+                    new ColorSelectList() { Text = "Red", Value = "Red" },
+                    new ColorSelectList() { Text = "Blue", Value = "Blue" },
+                    new ColorSelectList() { Text = "Green", Value = "Green" }
+                }, "Value", "Text", updateProduct.Color);
+
+                return View();
             }
         }
     }
