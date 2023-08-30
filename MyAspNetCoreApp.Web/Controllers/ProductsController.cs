@@ -154,5 +154,22 @@ namespace MyAspNetCoreApp.Web.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //[HttpGet]
+        //[HttpPost]
+        [AcceptVerbs("GET", "POST")]
+        public IActionResult HasProductName(string name)
+        {
+            var anyProduct = _context.Products.Any(p => p.Name.ToLower() == name.ToLower());
+            
+            if(anyProduct)
+            {
+                return Json("Bu isimde bir ürün veri tabanında zaten var !");
+            }
+            else
+            {
+                return Json(true);
+            }
+        }
     }
 }
