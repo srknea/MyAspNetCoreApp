@@ -19,7 +19,7 @@ namespace MyAspNetCoreApp.Web.ViewModels
         public int? Stock { get; set; }
 
         [Required(ErrorMessage = "Açıklama alanı boş olamaz !")]
-        [StringLength(1000, MinimumLength = 10, ErrorMessage = "Açıklama alanı en fazla 1000 karakter olabilir!")]
+        [StringLength(1000, MinimumLength = 10, ErrorMessage = "Açıklama alanı 10 ile 1000 karakter arasında olabilir !")]
         public string? Description { get; set; }
         
         [Required(ErrorMessage = "Renk alanı boş olamaz !")]
