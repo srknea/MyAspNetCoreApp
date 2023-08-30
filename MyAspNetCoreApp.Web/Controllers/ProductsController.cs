@@ -68,7 +68,7 @@ namespace MyAspNetCoreApp.Web.Controllers
             {
                 try
                 {
-                    throw new Exception();
+                    //throw new Exception();
 
                     _context.Products.Add(_mapper.Map<Product>(newProduct));
 
@@ -78,7 +78,7 @@ namespace MyAspNetCoreApp.Web.Controllers
                 }
                 catch (Exception)
                 {
-                    ModelState.AddModelError(String.Empty, "Ürün veri tabanına kaydedildiği sırada bir hata meydana geldi. Lütfen daha sonra tekrar deneyin !");   
+                    ModelState.AddModelError(String.Empty, "Ürün veri tabanına kaydedildiği sırada bir hata meydana geldi. Lütfen daha sonra tekrar deneyin !");
 
                     ViewBag.DictionaryExpire = new Dictionary<string, int>()
                     {
