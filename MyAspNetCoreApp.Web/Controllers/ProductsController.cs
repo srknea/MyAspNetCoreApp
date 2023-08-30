@@ -64,18 +64,39 @@ namespace MyAspNetCoreApp.Web.Controllers
         [HttpPost]
         public IActionResult Add(ProductViewModel newProduct)
         {
-            if (!string.IsNullOrEmpty(newProduct.Name) && newProduct.Name.StartsWith("A"))
-            {
-                ModelState.AddModelError(String.Empty, "Ürün ismi A harfi ile başlayamaz.");
-            }
-
             if (ModelState.IsValid)
             {
-                _context.Products.Add(_mapper.Map<Product>(newProduct));
+                try
+                {
+                    throw new Exception();
 
-                _context.SaveChanges();
+                    _context.Products.Add(_mapper.Map<Product>(newProduct));
 
-                return RedirectToAction("Index");
+                    _context.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError(String.Empty, "Ürün veri tabanına kaydedildiği sırada bir hata meydana geldi. Lütfen daha sonra tekrar deneyin !");   
+
+                    ViewBag.DictionaryExpire = new Dictionary<string, int>()
+                    {
+                        { "1 Ay", 1},
+                        { "3 Ay", 3},
+                        { "6 Ay", 6},
+                        { "12 Ay", 12}
+                    };
+
+                    ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>()
+                    {
+                        new ColorSelectList() { Text = "Red", Value = "Red" },
+                        new ColorSelectList() { Text = "Blue", Value = "Blue" },
+                        new ColorSelectList() { Text = "Green", Value = "Green" }
+                    }, "Value", "Text");
+
+                    return View();
+                }
             }
             else
             {
