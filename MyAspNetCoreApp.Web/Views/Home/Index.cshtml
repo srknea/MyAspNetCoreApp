@@ -3,15 +3,12 @@
 }
 
 @section Css{
-
     <link rel="stylesheet" href="~/css/example.css" asp-append-version="true" />
     
     <style>
-    
         h1 {
             background-color: orangered;
         }
-
     </style>
 }
 
@@ -21,15 +18,21 @@
 </div>
 
 <div class="row">
+    
     <div class="col-md-4">
         <partial name="~/PartialViews/_ProductListPartialView.cshtml" model="@ViewBag.productListPartialViewModel"/>
     </div>
+
+    <div class="col-md-4">
+
+        @await Component.InvokeAsync("ProductList")
+
+    </div>
+
 </div>
 
 @section Scripts{
-    
     <script>
-        
         //alert("Hello World!");
 
         /*
@@ -37,7 +40,5 @@
             alert("Hello World!");
         });
         */
-
     </script>
-
 }

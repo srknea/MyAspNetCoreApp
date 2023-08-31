@@ -4,16 +4,16 @@ using MyAspNetCoreApp.Web.ViewModels;
 
 namespace MyAspNetCoreApp.Web.Views.Shared.ViewComponents
 {
-    public class ProductListViewComponents : ViewComponent
+    public class ProductListViewComponent : ViewComponent
     {
         private readonly AppDbContext _context;
 
-        public ProductListViewComponents(AppDbContext context)
+        public ProductListViewComponent(AppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<IViewComponentResult> Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             var products = _context.Products
                 .OrderByDescending(p => p.Id)
@@ -24,11 +24,12 @@ namespace MyAspNetCoreApp.Web.Views.Shared.ViewComponents
                 })
                 .ToList();
 
-            ViewBag.productListPartialViewModel = new ProductListComponentViewModel()
+            var productsList = new ProductListComponentViewModel()
             {
                 Products = products
             };
-            return View();
+
+            return View(productsList);
         }
     }
 }
