@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage;
 using MyAspNetCoreApp.Web.Models;
 using MyAspNetCoreApp.Web.ViewModels;
 
@@ -12,8 +13,8 @@ namespace MyAspNetCoreApp.Web.Views.Shared.ViewComponents
         {
             _context = context;
         }
-
-        public async Task<IViewComponentResult> InvokeAsync()
+        
+        public async Task<IViewComponentResult> InvokeAsync(int type)
         {
             var products = _context.Products
                 .OrderByDescending(p => p.Id)
@@ -29,7 +30,14 @@ namespace MyAspNetCoreApp.Web.Views.Shared.ViewComponents
                 Products = products
             };
 
-            return View(productsList);
+            if (type == 1)
+            {
+                return View("FirstType",productsList);
+            }
+            else
+            {
+                return View("SecondType", productsList);
+            }
         }
     }
 }

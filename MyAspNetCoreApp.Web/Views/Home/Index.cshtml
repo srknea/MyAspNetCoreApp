@@ -17,24 +17,29 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-<div class="row">
-    
+<div class="row">    
     <div class="col-md-4">
         <partial name="~/PartialViews/_ProductListPartialView.cshtml" model="@ViewBag.productListPartialViewModel"/>
     </div>
+</div>
 
+<div class="row">
     <div class="col-md-4">
 
-        @await Component.InvokeAsync("ProductList")
+        @await Component.InvokeAsync("ProductList",new {type = 1})
 
     </div>
 
+    <div class="col-md-4">
+
+        @await Component.InvokeAsync("ProductList",new {type = 2})
+
+    </div>
 </div>
 
 @section Scripts{
     <script>
         //alert("Hello World!");
-
         /*
         $(document).ready(function () {
             alert("Hello World!");
