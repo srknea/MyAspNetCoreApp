@@ -1,6 +1,27 @@
 ﻿@model VisitorViewModel
 
-<form asp-action="Home" asp-action="SaveVisitorComment" method="post">
+@foreach (var item in ViewBag.visitorsViewModel as List<VisitorViewModel>)
+{
+    <div class="card mt-2">
+        <div class="card-body">
+            <h5 class="card-title">@item.Name</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">@item.CreatedDate.ToShortDateString()</h6>
+            <p class="card-text">@item.Comment</p>
+            
+        </div>
+    </div>
+}
+
+<hr />
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-dark" role="alert">
+        @TempData["Message"]
+    </div>
+}
+
+<form asp-controller="Home" asp-action="SaveVisitorComment" method="post">
     <div class="mb-3">
         <label class="form-label" asp-for="Name">İsim</label>
         <input class="form-control" asp-for="Name">
@@ -12,11 +33,6 @@
             <label class="form-control" asp-for="Comment">Yorum</label>
         </div>
     </div>
-
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
     
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
 </form>
