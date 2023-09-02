@@ -1,5 +1,22 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model VisitorViewModel
+
+<form>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Name">İsim</label>
+        <input class="form-control" asp-for="Name">
+    </div>
+
+    <div class="mb-3">
+        <div class="form-floating">
+            <textarea class="form-control" style="height: 100px" placeholder="Buraya yorum yaz" asp-for="Comment"></textarea>
+            <label class="form-control" asp-for="Comment">Yorum</label>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
