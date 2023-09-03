@@ -1,5 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+
+    var product = new Product()
+    {
+        Id = 1,
+        Name = "Silgi",
+        Price = 100,
+        Stock = 10
+    };
 }
 
 @section Css{
@@ -11,6 +19,10 @@
         }
     </style>
 }
+
+<div class="row mb-3">
+    <product-show product="@product"></product-show>
+</div>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
