@@ -48,12 +48,11 @@ app.MapControllerRoute(
     pattern: "{controller=Products}/{action=Pages}/{page}/{pagesize}");
 
 app.MapControllerRoute(
-    name: "productgetbyid",
-    pattern: "{controller=Products}/{action=Getbyid}/{productid}");
-
-app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
+app.MapControllerRoute(
+    name: "productgetbyid",
+    pattern: "{controller=Products}/{action=Getbyid}/{productid}");
 
+app.Run();
