@@ -1,19 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Pages";
 }
 
-@model List<ProductViewModel>
+<h1>@ViewBag.page</h1>
+<h1>@ViewBag.pageSize</h1>
 
-<h1>Products</h1>
-
-@if (TempData["status"] != null)
-{
-    <div class="alert alert-success" role="alert">
-        @TempData["status"]
-    </div>
-}
-
-<a asp-controller="products" asp-action="add">Yeni Ürün Ekle</a>
 <table class="table">
     <thead>
         <tr>
@@ -40,7 +31,7 @@
                 <td>@(item.IsPublish ? "Evet" : "Hayır")</td>
                 <td>@item.Expire</td>
                 <td>
-                    @if(item.Description != null)
+                    @if (item.Description != null)
                     {
                         @if (item.Description.Length > 20)
                         {
@@ -65,7 +56,3 @@
         }
     </tbody>
 </table>
-
-<a asp-controller="Products" asp-action="Pages" asp-route-page=1 asp-route-pagesize =3>1. sayfadan 3 ürün ver</a>
-<br/>
-<a asp-controller="Products" asp-action="Pages" asp-route-page=2 asp-route-pagesize=3>2. sayfadan 3 ürün ver</a>
