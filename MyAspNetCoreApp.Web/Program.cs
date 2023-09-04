@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -42,6 +43,11 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "article",
+    pattern: "blog/{*article}",
+    defaults: new { controller="Blog", action="Article" });
 
 app.MapControllerRoute(
     name: "productpages",
