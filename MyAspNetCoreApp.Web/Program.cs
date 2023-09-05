@@ -43,7 +43,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+/*
 app.MapControllerRoute(
     name: "article",
     pattern: "{controller=Blog}/{action=Article}/{name}/{id}");
@@ -51,13 +51,17 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "productpages",
     pattern: "{controller=Products}/{action=Pages}/{page}/{pagesize}");
+*/
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+/*
 app.MapControllerRoute(
     name: "productgetbyid",
     pattern: "{controller=Products}/{action=Getbyid}/{productid}");
-
+*/
 app.Run();
+
+

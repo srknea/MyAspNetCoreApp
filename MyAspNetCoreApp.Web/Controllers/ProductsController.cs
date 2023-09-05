@@ -28,6 +28,8 @@ namespace MyAspNetCoreApp.Web.Controllers
             return View(_mapper.Map<List<ProductViewModel>>(products));
         }
 
+        //[Route("[action]/{page}/{pageSize}")]
+        [Route("[controller]/[action]/{page}/{pageSize}")]
         public IActionResult Pages(int page, int pageSize)
         {
             var products = _context.Products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
@@ -38,14 +40,16 @@ namespace MyAspNetCoreApp.Web.Controllers
             return View(_mapper.Map<List<ProductViewModel>>(products));
         }
 
-
+        //[Route("[controller]/[action]/{productid}")]
+        //[Route("[action]/{productid}")]
+        //[Route("detay/{productid}")]
+        [Route("urunler/detay/{productid}")]
         public IActionResult GetById(int productid)
         {
 
             var product = _context.Products.Find(productid);
 
             return View(_mapper.Map<ProductViewModel>(product));
-
 
         }
 
