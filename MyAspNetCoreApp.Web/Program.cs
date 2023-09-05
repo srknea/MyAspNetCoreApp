@@ -46,8 +46,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "article",
-    pattern: "blog/{*article}",
-    defaults: new { controller="Blog", action="Article" });
+    pattern: "{controller=Blog}/{action=Article}/{name}/{id}");
 
 app.MapControllerRoute(
     name: "productpages",

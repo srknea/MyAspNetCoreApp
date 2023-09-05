@@ -4,7 +4,7 @@ namespace MyAspNetCoreApp.Web.Controllers
 {
     public class BlogController : Controller
     {
-        public IActionResult Article()
+        public IActionResult Article(string name, int id)
         {
             return View();
         }
